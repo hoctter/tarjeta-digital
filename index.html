@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mis 15 - Agustina</title>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
       background-image: url('fondooooo.jpg');
@@ -15,8 +15,53 @@
       margin: 0;
       font-family: 'Roboto', sans-serif;
       color: #333;
+      overflow: hidden; /* Evita scroll mientras esté la alerta */
+    }
+    #page-content {
+      display: none; /* Página oculta hasta aceptar */
+      overflow-y: auto; /* Scroll solo después */
+      height: 100vh;
+      padding: 0 20px 40px 20px;
+      box-sizing: border-box;
     }
 
+    /* Estilos de la alerta modal */
+    #audio-modal {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+    #audio-modal .modal-content {
+      background: #fff0f5cc;
+      padding: 30px 40px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 320px;
+      box-shadow: 0 0 20px rgba(233, 30, 99, 0.6);
+      font-family: 'Great Vibes', cursive;
+      color: #880e4f;
+    }
+    #audio-modal button {
+      margin-top: 25px;
+      padding: 12px 30px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    #audio-modal button:hover {
+      background-color: #c2185b;
+    }
+
+    /* El resto del CSS de la página igual que antes... */
     h1 {
       font-family: 'Great Vibes', cursive;
       font-size: 3.5rem;
@@ -128,15 +173,16 @@
       background-color: #c2185b;
     }
 
+    /* Estilos para la animación de fade-in y bajada */
     .fade-in {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 1s ease-out, transform 1s ease-out;
+      transform: translateY(40px); /* Empieza 40px abajo */
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Transición más rápida */
     }
 
     .fade-in.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0); /* Sube a su posición original */
     }
 
     .alias-normal {
@@ -147,94 +193,117 @@
   </style>
 </head>
 <body>
-  <!-- Reproductor de música (oculto) -->
-  <audio autoplay loop hidden>
-    <source src="musica.mp3" type="audio/mpeg">
-  </audio>
 
-  <h1>Mis 15 - Agustina</h1>
-
-  <div class="message-card fade-in">
-    Hay historias y personas que no voy a olvidar, y recuerdos como este que siempre voy a guardar, porque son parte de mi vida. <br> Es mi deseo que compartan conmigo este día tan especial.
-  </div>
-
-  <div class="countdown" id="countdown">
-    Cargando cuenta regresiva...
-  </div>
-
-  <div class="image-frame fade-in">
-    <img src="Agustina bebe.jpg" alt="Cumpleañera">
-  </div>
-
-  <div class="card fade-in">
-    <h2>Fecha</h2>
-    <div class="icon">📅</div>
-    <div class="info">Viernes 4 de Octubre</div>
-  </div>
-
-  <div class="image-frame fade-in">
-    <img src="agus.jpg" alt="Foto Agustina 2">
-  </div>
-
-  <div class="card fade-in">
-    <h2>Hora</h2>
-    <div class="icon">⏰</div>
-    <div class="info">21:00 hs (9 PM)</div>
-  </div>
-
-  <div class="message-card fade-in">
-    ✨ Vestimenta: Podés venir como quieras — elegante sport, casual, formal.<br>
-    Lo importante es que vengas a compartir este día tan especial conmigo 💖
-  </div>
-
-  <div class="message-card fade-in">
-    🎨 Colores reservados: <strong>rosa</strong> y <strong>plateado</strong><br>
-    (¡Gracias por respetarlo!)
-  </div>
-
-  <div class="card fade-in">
-    <h2>Ubicación</h2>
-    <div class="icon">📍</div>
-    <div class="info">
-      Salón de usos múltiples SOESGYPE MISIONES
-      <br/><br/>
-      <div class="image-frame fade-in">
-        <img src="salon.jpg" alt="foto del salon">
-      </div>
-      <a class="map-button" href="https://www.google.com.ar/maps/search/Sal%C3%B3n+de+usos+m%C3%BAltiples+SOESGYPE+MISIONES/@-27.4230131,-55.8897797,21z?hl=es&entry=ttu" target="_blank">Ver en Google Maps</a>
+  <div id="audio-modal">
+    <div class="modal-content">
+      <p>Para disfrutar mejor, por favor acepta el audio.</p>
+      <button id="btn-accept-audio">Aceptar</button>
     </div>
   </div>
 
-  <div class="message-card fade-in">
-    🎁 Tu presencia es mi mejor regalo…<br>
-    pero si querés hacerme un obsequio, te dejo mi información 💕<br>
-    <em>(¡Gracias de corazón!)</em>
-    <br><br>
-    <strong>Alias Mercado Pago:</strong>
-    <span id="alias" class="alias-normal">agushttr.mp</span>
-    <br><br>
-    <button class="whatsapp-button" onclick="copiarAlias()">Copiar alias</button>
-  </div>
+  <div id="page-content">
 
-  <div class="card fade-in">
-    <h2>Confirmar Asistencia</h2>
-    <div class="icon">📱🎉</div>
-    <div class="info">¡Confirmá tu asistencia enviando un mensajito!</div>
-    <a class="whatsapp-button" href="https://wa.me/5493764184048?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20de%20Agusss.%20😊" target="_blank">
-      Confirmar por WhatsApp
-    </a>
+    <audio id="musica" loop hidden>
+      <source src="musica.mp3" type="audio/mpeg" />
+    </audio>
+
+    <h1>Mis 15 - Agustina</h1>
+
+    <div class="message-card fade-in">
+      Hay historias y personas que no voy a olvidar, y recuerdos como este que siempre voy a guardar, porque son parte de mi vida. <br /> Es mi deseo que compartan conmigo este día tan especial.
+    </div>
+
+    <div class="countdown" id="countdown">
+      Cargando cuenta regresiva...
+    </div>
+
+    <div class="image-frame fade-in">
+      <img src="Agustina bebe.jpg" alt="Cumpleañera" />
+    </div>
+
+    <div class="card fade-in">
+      <h2>Fecha</h2>
+      <div class="icon">📅</div>
+      <div class="info">Viernes 4 de Octubre</div>
+    </div>
+
+    <div class="image-frame fade-in">
+      <img src="agus.jpg" alt="Foto Agustina 2" />
+    </div>
+
+    <div class="card fade-in">
+      <h2>Hora</h2>
+      <div class="icon">⏰</div>
+      <div class="info">21:00 hs (9 PM)</div>
+    </div>
+
+    <div class="message-card fade-in">
+      ✨ Vestimenta: Podés venir como quieras — elegante sport, casual, formal.<br />
+      Lo importante es que vengas a compartir este día tan especial conmigo 💖
+    </div>
+
+    <div class="message-card fade-in">
+      🎨 Colores reservados: <strong>rosa</strong> y <strong>plateado</strong><br />
+      (¡Gracias por respetarlo!)
+    </div>
+
+    <div class="card fade-in">
+      <h2>Ubicación</h2>
+      <div class="icon">📍</div>
+      <div class="info">
+        Salón de usos múltiples SOESGYPE MISIONES
+        <br /><br />
+        <div class="image-frame fade-in">
+          <img src="salon.jpg" alt="foto del salon" />
+        </div>
+        <a
+          class="map-button"
+          href="https://www.google.com.ar/maps/search/Sal%C3%B3n+de+usos+m%C3%BAltiples+SOESGYPE+MISIONES/@-27.4230131,-55.8897797,21z?hl=es&entry=ttu"
+          target="_blank"
+          >Ver en Google Maps</a
+        >
+      </div>
+    </div>
+
+    <div class="message-card fade-in">
+      🎁 Tu presencia es mi mejor regalo…<br />
+      pero si querés hacerme un obsequio, te dejo mi información 💕<br />
+      <em>(¡Gracias de corazón!)</em>
+      <br /><br />
+      <strong>Alias Mercado Pago:</strong>
+      <span id="alias" class="alias-normal">agushttr.mp</span>
+      <br /><br />
+      <button class="whatsapp-button" onclick="copiarAlias()">Copiar alias</button>
+    </div>
+
+    <div class="card fade-in">
+      <h2>Confirmar Asistencia</h2>
+      <div class="icon">📱🎉</div>
+      <div class="info">¡Confirmá tu asistencia enviando un mensajito!</div>
+      <a
+        class="whatsapp-button"
+        href="https://wa.me/5493764184048?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20de%20Agusss.%20😊"
+        target="_blank"
+        >Confirmar por WhatsApp</a
+      >
+    </div>
   </div>
 
   <script>
-    const targetDate = new Date("2025-10-04T21:00:00").getTime();
-    const countdown = document.getElementById("countdown");
+    const targetDate = new Date('2025-10-04T21:00:00').getTime();
+    const countdown = document.getElementById('countdown');
+
+    // Función auxiliar para añadir un cero inicial si el número es menor a 10
+    function formatTime(unit) {
+      return unit < 10 ? '0' + unit : unit;
+    }
 
     setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
       if (distance < 0) {
-        countdown.innerHTML = "¡Ya comenzó la fiesta!";
+        countdown.innerHTML = '¡Ya comenzó la fiesta!';
         return;
       }
 
@@ -243,55 +312,62 @@
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = `
-        Faltan ${days} : ${hours.toString().padStart(2, '0')} :
-        ${minutes.toString().padStart(2, '0')} :
-        ${seconds.toString().padStart(2, '0')}
-      `;
+      // Formatea los números con dos dígitos
+      const formattedHours = formatTime(hours);
+      const formattedMinutes = formatTime(minutes);
+      const formattedSeconds = formatTime(seconds);
+
+      // Muestra el formato deseado
+      countdown.innerHTML = `Faltan ${days}:${formattedHours}:${formattedMinutes}:${formattedSeconds} para la fiesta🎉`;
     }, 1000);
-  </script>
 
-  <script>
-    const fadeElements = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        } else {
-          entry.target.classList.remove('visible');
-        }
-      });
-    }, {
-      threshold: 0.3
-    });
-
-    fadeElements.forEach(el => observer.observe(el));
-  </script>
-
-  <script>
     function copiarAlias() {
       const alias = document.getElementById('alias').textContent;
       navigator.clipboard.writeText(alias).then(() => {
-        alert("Alias copiado al portapapeles");
-      }).catch(() => {
-        alert("No se pudo copiar el alias");
+        alert('Alias copiado al portapapeles');
       });
     }
-  </script>
 
-  <!-- Script para pedir permiso de audio -->
-  <script>
-    window.addEventListener('load', () => {
-      const audio = document.querySelector('audio');
-      audio.play().then(() => {
-        console.log('Audio reproduciéndose.');
+    const btnAcceptAudio = document.getElementById('btn-accept-audio');
+    const musica = document.getElementById('musica');
+    const audioModal = document.getElementById('audio-modal');
+    const pageContent = document.getElementById('page-content');
+
+    btnAcceptAudio.addEventListener('click', () => {
+      musica.play().then(() => {
+        audioModal.style.display = 'none';  // Oculta modal
+        pageContent.style.display = 'block'; // Muestra contenido
+        document.body.style.overflow = 'auto'; // Permite scroll
+        // Iniciar las animaciones cuando la página es visible
+        setupScrollAnimation();
       }).catch(() => {
-        alert('Por favor, permití el audio para disfrutar la música de la invitación.');
-        document.body.addEventListener('click', () => {
-          audio.play();
-        }, { once: true });
+        alert('No se pudo reproducir el audio. Por favor, intenta de nuevo.');
       });
     });
+
+    // --- Lógica de la animación al hacer scroll ---
+    const fadeInElements = document.querySelectorAll('.fade-in');
+
+    function checkFadeInElements() {
+      fadeInElements.forEach(element => {
+        // Obtiene la posición del elemento respecto al viewport
+        const elementTop = element.getBoundingClientRect().top;
+        const viewportHeight = window.innerHeight;
+
+        // Si el elemento está en la parte visible de la pantalla (o un poco antes)
+        if (elementTop < viewportHeight - 100) { // El -100 es un offset para que aparezca un poco antes
+          element.classList.add('visible');
+        }
+      });
+    }
+
+    // Función para configurar el observador de scroll después de que la página sea visible
+    function setupScrollAnimation() {
+        // Ejecuta la función una vez al cargar para los elementos ya visibles
+        checkFadeInElements();
+        // Agrega el evento de scroll para que se ejecute la función cada vez que se haga scroll
+        pageContent.addEventListener('scroll', checkFadeInElements);
+    }
   </script>
 </body>
 </html>
