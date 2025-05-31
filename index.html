@@ -262,7 +262,7 @@
         }
       });
     }, {
-      threshold: 0.1
+      threshold: 0.3
     });
 
     fadeElements.forEach(el => observer.observe(el));
@@ -270,23 +270,26 @@
 
   <script>
     function copiarAlias() {
-      const alias = document.getElementById("alias").innerText;
+      const alias = document.getElementById('alias').textContent;
       navigator.clipboard.writeText(alias).then(() => {
-        alert("Alias copiado: " + alias);
-      }).catch(err => {
-        alert("No se pudo copiar. Copialo manualmente: " + alias);
+        alert("Alias copiado al portapapeles");
+      }).catch(() => {
+        alert("No se pudo copiar el alias");
       });
     }
   </script>
 
-  <!-- 🎉 Efecto de confeti al cargar -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <!-- Script para pedir permiso de audio -->
   <script>
     window.addEventListener('load', () => {
-      confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 }
+      const audio = document.querySelector('audio');
+      audio.play().then(() => {
+        console.log('Audio reproduciéndose.');
+      }).catch(() => {
+        alert('Por favor, permití el audio para disfrutar la música de la invitación.');
+        document.body.addEventListener('click', () => {
+          audio.play();
+        }, { once: true });
       });
     });
   </script>
