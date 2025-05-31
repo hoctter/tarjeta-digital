@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mis 15 - Agustina</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Tu CSS original aquí sin cambios */
+    body {
+      background-image: url('fondooooo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      color: #333;
+    }
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3.5rem;
+      text-align: center;
+      color: #e91e63;
+      margin-top: 30px;
+    }
+
+    .message-card {
+      font-family: 'Great Vibes', cursive;
+      font-size: 1.8rem;
+      color: #880e4f;
+      text-align: center;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 700px;
+      background: #fff0f5cc;
+      border-radius: 25px;
+      border: 2px solid #f8bbd0;
+      box-shadow: 0 0 15px rgba(183, 26, 78, 0.2);
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #84094a;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #ffe6f0cc;
+      margin: 20px;
+      padding: 25px;
+      border-radius: 30px;
+      border: 5px dashed #f48fb1;
+      box-shadow: 0 0 20px rgba(255, 192, 203, 0.3);
+      text-align: center;
+      position: relative;
+      backdrop-filter: blur(3px);
+    }
+
+    .card::before {
+      content: "💗💗💗";
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      font-size: 1.5rem;
+    }
+
+    .card::after {
+      content: "💗💗💗";
+      position: absolute;
+      bottom: -20px;
+      right: 20px;
+      font-size: 1.5rem;
+    }
+
+    .card h2 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2rem;
+      color: #7b1fa2;
+      margin-bottom: 15px;
+    }
+
+    .info {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+    .icon {
+      font-size: 3rem;
+      margin: 10px 0;
+    }
+
+    .image-frame {
+      margin: 30px auto;
+      width: 80%;
+      max-width: 300px;
+      border: 5px solid #e91e63;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(233, 30, 99, 0.3);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .map-button, .whatsapp-button {
+      background-color: #e91e63;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.2rem;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .map-button:hover,
+    .whatsapp-button:hover {
+      background-color: #c2185b;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s ease-out, transform 1s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .alias-normal {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1.4rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <!-- Reproductor de música (oculto) -->
+  <audio autoplay loop hidden>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>Mis 15 - Agustina</h1>
+
+  <div class="message-card fade-in">
+    Hay historias y personas que no voy a olvidar, y recuerdos como este que siempre voy a guardar, porque son parte de mi vida. <br> Es mi deseo que compartan conmigo este día tan especial.
+  </div>
+
+  <div class="countdown" id="countdown">
+    Cargando cuenta regresiva...
+  </div>
+
+  <div class="image-frame fade-in">
+    <img src="Agustina bebe.jpg" alt="Cumpleañera">
+  </div>
+
+  <div class="card fade-in">
+    <h2>Fecha</h2>
+    <div class="icon">📅</div>
+    <div class="info">Viernes 4 de Octubre</div>
+  </div>
+
+  <div class="image-frame fade-in">
+    <img src="agus.jpg" alt="Foto Agustina 2">
+  </div>
+
+  <div class="card fade-in">
+    <h2>Hora</h2>
+    <div class="icon">⏰</div>
+    <div class="info">21:00 hs (9 PM)</div>
+  </div>
+
+  <div class="message-card fade-in">
+    ✨ Vestimenta: Podés venir como quieras — elegante sport, casual, formal.<br>
+    Lo importante es que vengas a compartir este día tan especial conmigo 💖
+  </div>
+
+  <div class="message-card fade-in">
+    🎨 Colores reservados: <strong>rosa</strong> y <strong>plateado</strong><br>
+    (¡Gracias por respetarlo!)
+  </div>
+
+  <div class="card fade-in">
+    <h2>Ubicación</h2>
+    <div class="icon">📍</div>
+    <div class="info">
+      Salón de usos múltiples SOESGYPE MISIONES
+      <br/><br/>
+      <div class="image-frame fade-in">
+        <img src="salon.jpg" alt="foto del salon">
+      </div>
+      <a class="map-button" href="https://www.google.com.ar/maps/search/Sal%C3%B3n+de+usos+m%C3%BAltiples+SOESGYPE+MISIONES/@-27.4230131,-55.8897797,21z?hl=es&entry=ttu" target="_blank">Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <div class="message-card fade-in">
+    🎁 Tu presencia es mi mejor regalo…<br>
+    pero si querés hacerme un obsequio, te dejo mi información 💕<br>
+    <em>(¡Gracias de corazón!)</em>
+    <br><br>
+    <strong>Alias Mercado Pago:</strong>
+    <span id="alias" class="alias-normal">agushttr.mp</span>
+    <br><br>
+    <button class="whatsapp-button" onclick="copiarAlias()">Copiar alias</button>
+  </div>
+
+  <div class="card fade-in">
+    <h2>Confirmar Asistencia</h2>
+    <div class="icon">📱🎉</div>
+    <div class="info">¡Confirmá tu asistencia enviando un mensajito!</div>
+    <a class="whatsapp-button" href="https://wa.me/5493764184048?text=¡Hola!%20Confirmo%20mi%20asistencia%20a%20los%2015%20de%20Agusss.%20😊" target="_blank">
+      Confirmar por WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const targetDate = new Date("2025-10-04T21:00:00").getTime();
+    const countdown = document.getElementById("countdown");
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) {
+        countdown.innerHTML = "¡Ya comenzó la fiesta!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdown.innerHTML = `
+        Faltan ${days} : ${hours.toString().padStart(2, '0')} :
+        ${minutes.toString().padStart(2, '0')} :
+        ${seconds.toString().padStart(2, '0')}
+      `;
+    }, 1000);
+  </script>
+
+  <script>
+    const fadeElements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        } else {
+          entry.target.classList.remove('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+
+    fadeElements.forEach(el => observer.observe(el));
+  </script>
+
+  <script>
+    function copiarAlias() {
+      const alias = document.getElementById("alias").innerText;
+      navigator.clipboard.writeText(alias).then(() => {
+        alert("Alias copiado: " + alias);
+      }).catch(err => {
+        alert("No se pudo copiar. Copialo manualmente: " + alias);
+      });
+    }
+  </script>
+</body>
+</html>
