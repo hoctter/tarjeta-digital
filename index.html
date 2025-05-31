@@ -6,7 +6,6 @@
   <title>Mis 15 - Agustina</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* Tu CSS original aquí sin cambios */
     body {
       background-image: url('fondooooo.jpg');
       background-size: cover;
@@ -254,7 +253,6 @@
 
   <script>
     const fadeElements = document.querySelectorAll('.fade-in');
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -279,6 +277,18 @@
         alert("No se pudo copiar. Copialo manualmente: " + alias);
       });
     }
+  </script>
+
+  <!-- 🎉 Efecto de confeti al cargar -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    });
   </script>
 </body>
 </html>
